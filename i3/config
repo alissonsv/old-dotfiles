@@ -169,22 +169,27 @@ bindsym $mod+r mode "resize"
 #        status_command polybar example
 #}
 
+for_window [class="code"] move to workspace $ws2
+for_window [class="robo3t"] move to workspace $ws3
+for_window [class="insomnia"] move to workspace $ws3
+for_window [class="google-chrome-stable"] move to workspace $ws8
+for_window [class="Discord"] move to workspace $ws9
 for_window [class="Spotify"] move to workspace $ws10
 
 #set keyboard to pt-br
 exec setxkbmap -model abnt2 -layout br -variant abnt2
 
 #Pulse Audio Controls
-bindsym XF86AudioRaiseVolume exec pactl set-sink-volume 0 +5% #increase     sound volume
-bindsym XF86AudioLowerVolume exec pactl set-sink-volume 0 -5%  #decrease     sound volume
-bindsym XF86AudioMute exec pactl set-sink-mute 0 toggle #mute sound
+bindsym XF86AudioRaiseVolume exec pactl set-sink-volume @DEFAULT_SINK@ +5% #increase     sound volume
+bindsym XF86AudioLowerVolume exec pactl set-sink-volume @DEFAULT_SINK@ -5%  #decrease     sound volume
+bindsym XF86AudioMute exec pactl set-sink-mute 1 toggle #mute sound
 bindsym XF86AudioPlay exec playerctl play-pause
 bindsym XF86AudioStop exec playerctl stop
 bindsym XF86AudioNext exec playerctl next
 bindsym XF86AudioPrev exec playerctl previous
-bindsym XF86Mail exec thunderbird
+bindsym XF86Mail exec ~/.config/dev-mode/launch.sh
 bindsym XF86HomePage exec firefox
-#bindsym XF86HomePage exec google-chrome-stable
+bindsym Print exec scrot $HOME/Pictures/screenshot-`date +%Y-%m-%d_%H:%M:%S`.png
  
 #polybar
 exec_always --no-startup-id $HOME/.config/polybar/launch.sh
@@ -194,10 +199,18 @@ bindsym Ctrl+Mod1+l exec i3lock
 
 exec xset -dpms
 exec xset s off
- 
-exec compton
+
+#old compton 
+exec_always picom -C
+
 #wallpaper
-exec_always feh --bg-max /home/alisson/Imagens/wallpapers/beach.jpg
+exec_always feh --bg-fill /home/alisson/Pictures/wallpapers/wallpaper.jpg
+
+# spotify
+exec spotify
+
+# discord
+exec discord
 
 #gaps
 gaps inner 5
