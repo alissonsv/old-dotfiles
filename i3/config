@@ -79,7 +79,7 @@ bindsym $mod+v split v
 bindsym $mod+f fullscreen toggle
 
 # change container layout (stacked, tabbed, toggle split)
-bindsym $mod+s layout stacking
+bindsym $mod+Shift+s layout stacking
 bindsym $mod+w layout tabbed
 bindsym $mod+e layout toggle split
 
@@ -176,9 +176,6 @@ bindsym $mod+r mode "resize"
 #}
 
 for_window [class="code"] move to workspace $ws2
-for_window [class="robo3t"] move to workspace $ws8
-for_window [class="insomnia"] move to workspace $ws8
-for_window [class="google-chrome-stable"] move to workspace $ws8
 for_window [class="Discord"] move to workspace $ws9
 for_window [class="Spotify"] move to workspace $ws10
 
@@ -196,13 +193,16 @@ bindsym XF86AudioNext exec playerctl next
 bindsym XF86AudioPrev exec playerctl previous
 bindsym XF86Calculator exec ~/.config/dev-mode/launch.sh
 bindsym XF86HomePage exec firefox
-bindsym Print exec scrot -D DP-1 $HOME/Pictures/screenshot-`date +%Y-%m-%d_%H:%M:%S`.png
+bindsym Print exec flameshot screen -n 1-2 -p Pictures/screenshots
+
+#screenshot with GUI
+bindsym $mod+s exec flameshot gui
  
 #polybar
 exec_always --no-startup-id $HOME/.config/polybar/launch.sh
  
 #i3lock
-bindsym Ctrl+Mod1+l exec i3lock
+bindsym Ctrl+$mod+l exec i3lock
 
 exec xset -dpms
 exec xset s off
@@ -211,7 +211,7 @@ exec xset s off
 exec_always picom -i 1 -m 1 -D 6
 
 #wallpaper
-exec_always feh --bg-fill /home/alisson/Pictures/wallpapers/wallpaper.png
+exec_always feh --bg-fill /home/alisson/Pictures/wallpapers/neon.jpg
 
 # spotify
 exec spotify
@@ -221,5 +221,11 @@ exec discord
 
 #gaps
 gaps inner 5
+
+# flameshot (for screenshots)
+exec_always flameshot
+
+# dunst (notifications)
+exec dunst
 
 new_window pixel
