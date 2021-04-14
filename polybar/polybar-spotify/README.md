@@ -23,7 +23,7 @@ format-underline = #1db954
 
 ##### Truncate
 
-The argument "-t" is optional and sets the `trunlen`. It specifies the maximum length of the song name, so that it gets truncated when the specified length is exceeded. Defaults to 25.
+The argument "-t" is optional and sets the `trunlen`. It specifies the maximum length of the printed string, so that it gets truncated when the specified length is exceeded. Defaults to 35.
 
 Override example:
 
@@ -67,4 +67,15 @@ The argument "--playpause-font" is optional, and allow to specify which font fro
 Override example:
 ``` ini
 exec = python /path/to/spotify/script -p '[playing],[paused]' --playpause-font=2
+```
+
+##### Quiet
+
+The argument "-q" or "--quiet" is optional and specifies whether to display the output when the current song is paused.
+This will make polybar only show a song title and artist (or whatever your custom format is) when the song is actually playing and not when it's paused.
+Simply setting the flag on the comand line will enable this option.
+
+Override example:
+```ini
+exec = python /path/to/spotify/script -q
 ```
