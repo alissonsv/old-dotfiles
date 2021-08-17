@@ -33,7 +33,7 @@ floating_modifier $mod
 exec xrandr --output DP-1 --primary --mode 1920x1080 --rate 75.00 --pos 1366x0 --output HDMI-1 --mode 1366x768 --pos 0x196
 
 # start a terminal
-bindsym $mod+Return exec termite
+bindsym $mod+Return exec alacritty
 
 # kill focused window
 bindsym $mod+Shift+q kill
