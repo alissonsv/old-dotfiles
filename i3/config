@@ -216,6 +216,9 @@ exec_always feh --bg-fill /home/alisson/Pictures/wallpapers/neon.jpg
 # spotify
 exec spotify
 
+# telegram
+exec telegram-desktop
+
 # discord
 exec discord
 
