@@ -18,7 +18,7 @@ primary = #ffb52a
 secondary = #e60053
 alert = #bd2c40
 
-[bar/example]
+[bar/topbar]
 monitor = ${env:MONITOR:DP-1}
 ;width = 94%
 height = 27
@@ -44,17 +44,18 @@ padding-right = 2
 module-margin-left = 1
 module-margin-right = 2
 
-font-0 = fixed:pixelsize=10;1
+;font-0 = fixed:pixelsize=10;1
+font-0 = "DejaVu Sans:pixelsize=10;1"
 font-1 = unifont:fontformat=truetype:size=8:antialias=false;0
 font-2 = Wuncon Siji:pixelsize=10;1
-font-3 = "Font Awesome 5 Free:style=Regular:pixelsize=10;1"
-font-4 = "Font Awesome 5 Free:style=Solid:pixelsize=10;1"
-font-5 = "Font Awesome 5 Brands:pixelsize=10;1"
-font-6 = "Noto Color Emoji:scale=14"
+font-3 = "Font Awesome 6 Free:style=Regular:pixelsize=10;1"
+font-4 = "Font Awesome 6 Free:style=Solid:pixelsize=10;1"
+;font-5 = "Font Awesome 6 Brands:pixelsize=10;1"
+;font-6 = "Noto Color Emoji:scale=14"
 
 modules-left = i3
-modules-center = date
-modules-right = spotify cpu memory eth pulseaudio
+modules-center = date 
+modules-right = spotify cpu cpu-temp memory wlan eth pulseaudio
 
 tray-position = right
 ;tray-detached = true
@@ -123,6 +124,17 @@ label-empty = %index%
 label-empty-foreground = ${colors.foreground-alt}
 label-empty-padding = 2
 
+[module/creatine-scrapper]
+type = custom/script
+exec = ~/workspace/projetos/creatine-scrapper/dist/puppeteer-scrap.js
+interval = 600
+
+[module/cpu-temp]
+type = custom/script
+exec = ~/.config/polybar/temperature/cpu-temp.sh
+interval = 1
+format-underline = #f90000
+
 [module/i3]
 type = internal/i3
 format = <label-state> <label-mode>
@@ -190,7 +202,6 @@ bar-empty-foreground = ${colors.foreground-alt}
 [module/spotify]
 type = custom/script
 interval = 1
-format-prefix = " "
 format = <label>
 exec = python /home/alisson/.config/polybar/polybar-spotify/spotify_status.py -f '{artist}: {song}'
 format-underline = #1db954
@@ -218,10 +229,10 @@ label = %percentage_used%%
 
 [module/wlan]
 type = internal/network
-interface = wlp1s0
+interface = wlp8s0f3u1
 interval = 3.0
 format-connected = <label-connected>
-label-connected = " %essid%"
+label-connected = " %essid% - %local_ip%"
 
 [module/eth]
 type = internal/network
