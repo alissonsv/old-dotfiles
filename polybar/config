@@ -19,7 +19,7 @@ secondary = #e60053
 alert = #bd2c40
 
 [bar/topbar]
-monitor = ${env:MONITOR:DP-1}
+monitor = ${env:MONITOR:DisplayPort-0}
 ;width = 94%
 height = 27
 offset-x = 0
@@ -236,7 +236,7 @@ label-connected = " %essid% - %local_ip%"
 
 [module/eth]
 type = internal/network
-interface = enp4s0
+interface = enp5s0
 interval = 3.0
 
 format-connected-underline = #55aa55
